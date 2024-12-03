@@ -3,8 +3,16 @@ import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 
 import { AccessToken, Role } from "@huddle01/server-sdk/auth";
+import { cors } from "hono/cors";
 
 const app = new Hono();
+
+app.use(
+  "*",
+  cors({
+    origin: "*",
+  })
+);
 
 app.get(
   "/",
